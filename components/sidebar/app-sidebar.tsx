@@ -6,27 +6,32 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { BookOpen, Boxes, BoxIcon, Settings2 } from "lucide-react"
+import { BookOpen, Boxes, BoxIcon, LayoutDashboardIcon, Settings2 } from "lucide-react"
 import SidebarBody from "./SidebarBody"
 import { SidebarLegs } from "./SidebarLegs"
 
 const data = [
   {
-    title: "Catalog",
-    url: "/catalog",
+    title: "Dashboard",
+    url: "/",
+    icon: LayoutDashboardIcon,
+  },
+  {
+    title: "Catalogue",
+    url: "/catalogue",
     icon: BookOpen,
     items: [
       {
         title: "Add Product",
-        url: "/catalog/add",
+        url: "/catalogue/add",
       },
       {
         title: "All Products",
-        url: "/catalog",
+        url: "/catalogue",
       },
       {
         title: "Favorites",
-        url: "/catalog?favorites=true",
+        url: "/catalogue?favorites=true",
       },
     ],
   },
@@ -34,12 +39,6 @@ const data = [
     title: "Inventory",
     url: "/inventory",
     icon: Boxes,
-    items: [
-      {
-        title: "Manage Inventory",
-        url: "/inventory",
-      },
-    ]
   },
   {
     title: "Orders",

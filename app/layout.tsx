@@ -26,9 +26,14 @@ export default function RootLayout({
           <SignedIn>
             <SidebarProvider>
               <AppSidebar />
-              <main>
-                <SidebarTrigger />
-                {children}
+              <main className="flex flex-col w-full">
+                <div className="flex items-center">
+                  <SidebarTrigger />
+                  <p>name and Logo</p>
+                </div>
+                <div className="flex w-full justify-center">
+                  {children}
+                </div>
               </main>
             </SidebarProvider>
           </SignedIn>

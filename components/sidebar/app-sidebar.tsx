@@ -6,9 +6,10 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { BookOpen, Boxes, BoxIcon, LayoutDashboardIcon, Settings2 } from "lucide-react"
+import { AudioWaveform, BookOpen, Boxes, BoxIcon, Command, GalleryVerticalEnd, LayoutDashboardIcon, Settings2 } from "lucide-react"
 import SidebarBody from "./SidebarBody"
 import { SidebarLegs } from "./SidebarLegs"
+import { SidebarHead } from "./SidebarHead"
 
 const data = [
   {
@@ -80,11 +81,29 @@ const data = [
   },
 ]
 
+const teams = [
+  {
+    name: "Acme Inc",
+    logo: GalleryVerticalEnd,
+    plan: "Enterprise",
+  },
+  {
+    name: "Acme Corp.",
+    logo: AudioWaveform,
+    plan: "Startup",
+  },
+  {
+    name: "Evil Corp.",
+    logo: Command,
+    plan: "Free",
+  },
+]
+
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        <p>test</p>
+        <SidebarHead teams={teams} />
       </SidebarHeader>
       <SidebarContent>
         <SidebarBody items={data} />

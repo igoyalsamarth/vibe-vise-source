@@ -8,13 +8,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { IFormFields } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { CircleAlert, InfoIcon } from "lucide-react";
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 export default function AddCataloguePage() {
-  const formFields = {
+  const formFields: IFormFields = {
     productIdentity: {
       label: "Product Identity",
       groups: [
@@ -636,8 +637,17 @@ export default function AddCataloguePage() {
             {Object.entries(formFields).map(([key, { groups }]) => (
               <TabsContent key={key} value={key} className="w-full">
                 {groups.map((group, groupIndex) => (
-                  <div key={groupIndex} className="mb-6">
-                    <h3 className="text-lg font-semibold mb-4">{group.heading}</h3>
+                  <div key={groupIndex}>
+                    <div className="flex items-center gap-2 mb-4">
+                      {group.heading && <p className="whitespace-nowrap">{group.heading}</p>}
+                      {group.tooltip && <HoverCard openDelay={200} closeDelay={200}>
+                        <HoverCardTrigger><InfoIcon className="w-4 h-4" fill="black" stroke="white" /></HoverCardTrigger>
+                        <HoverCardContent sideOffset={0} alignOffset={0}>
+                          {group.tooltip}
+                        </HoverCardContent>
+                      </HoverCard>}
+                      {groupIndex > 0 && <div className="w-full h-0.5 bg-slate-500"></div>}
+                    </div>
                     <div className="space-y-4">
                       {group.fields.map((field) => (
                         <FormField
